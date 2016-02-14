@@ -1,8 +1,8 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
-var Hello = require('./helloworld.js').default;
+var TodoApp = require('./todoApp.js').default;
 
 ReactDOM.render(
-	<Hello name="Richard" />,
+	<TodoApp/>,
 	document.getElementById("content")
 );
