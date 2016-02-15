@@ -50,7 +50,9 @@
 	var React = __webpack_require__(147);
 	var TodoApp = __webpack_require__(159).default;
 
-	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById("content"));
+	var data = [{ text: "This is one comment" }, { text: "This is *another* comment" }];
+	var content = 'hello world';
+	ReactDOM.render(React.createElement(TodoApp, { data: data }), document.getElementById("content"));
 
 /***/ },
 /* 1 */
@@ -19695,9 +19697,13 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Hello, This is a todo app',
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'ToDos'
+	        ),
 	        _react2.default.createElement(TodoForm, null),
-	        _react2.default.createElement(TodoList, null)
+	        _react2.default.createElement(TodoList, { data: this.props.data })
 	      );
 	    }
 	  }]);
@@ -19711,7 +19717,7 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -19741,12 +19747,13 @@
 	  }
 
 	  _createClass(todoForm, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        "form",
 	        null,
-	        ' I am a todo form '
+	        _react2.default.createElement("input", { type: "text", placeholder: "Content" }),
+	        _react2.default.createElement("input", { type: "submit", value: "Post" })
 	      );
 	    }
 	  }]);
@@ -19794,11 +19801,18 @@
 	  _createClass(todoList, [{
 	    key: 'render',
 	    value: function render() {
+	      var items = this.props.data.map(function (item) {
+	        return _react2.default.createElement(
+	          TodoItem,
+	          null,
+	          item.text
+	        );
+	      });
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'I am a todo list',
-	        _react2.default.createElement(TodoItem, null)
+	        items
 	      );
 	    }
 	  }]);
@@ -19845,9 +19859,9 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        'li',
 	        null,
-	        'I am a todo Item'
+	        this.props.children
 	      );
 	    }
 	  }]);
