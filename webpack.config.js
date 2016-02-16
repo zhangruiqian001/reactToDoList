@@ -1,9 +1,17 @@
+var webpack = require('webpack');
 module.exports = {
     entry: "./assets/js/entry.js",
     output: {
         path: __dirname + '/public/javascripts/',
         filename: "bundle.js"
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })/*,
+        uglifyJsPlugin*/
+    ],
     module: {
         loaders: [
             { 
